@@ -1,48 +1,48 @@
 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-    
+
     <div class="flex w-full">
-    <div class="w-2/3">
+        <div class="w-2/3">
 
-<div class="px-4 sm:px-6 lg:px-8 mb-5">
-    <div class="mt-8 flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300">
-                    <thead>
-                        <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Location</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Start Date</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">End Date</th>
-                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                            <span class="sr-only">Edit</span>
-                        </th>
-                        </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    @foreach($maps as $map)
-                        <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $map->map_name }}</td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->category }}</td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->start_date }}</td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->end_date }}</td>
-                        <td>
-                            <div wire:click="dto_edit({{ $map->id }})" class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-white bg-indigo-400 ring-gray-400/20 text-center cursor-pointer">Edit</div>
-                        </td>
-                        
-                        </tr>
-                    @endforeach
-                        <tr>
-                            <td colspan="5" class='pt-1'>{{ $maps->links() }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="px-4 sm:px-6 lg:px-8 mb-5">
+                <div class="mt-0 flow-root">
+                    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                            <table class="min-w-full divide-y divide-gray-300">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Location</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Start Date</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">End Date</th>
+                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                                            <span class="sr-only">Edit</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    @foreach($maps as $map)
+                                    <tr>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ $map->map_name }}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->category }}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->start_date }}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $map->end_date }}</td>
+                                        <td>
+                                            <div wire:click="dto_edit({{ $map->id }})" class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-white bg-indigo-400 ring-gray-400/20 text-center cursor-pointer">Edit</div>
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td colspan="5" class='pt-1'>{{ $maps->links() }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
-</div>
+        </div>
         <div class='w-1/3'>
             <div class="p-3">
                 @if(session('success'))
@@ -129,7 +129,7 @@
     </div>
 </div>
 <script>
-    var map = L.map('map').setView([{{ $center_lat }}, {{ $center_lng }}], {{ $map_zoom }});
+    var map = L.map('map').setView([{{ $center_lat }}, {{$center_lng}}], {{$map_zoom}});
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -138,7 +138,7 @@
     document.addEventListener('livewire:initialized', function() {
         let component = @this;
         let mapsServer = @js($maps);
-      
+
         var drawnItems = new L.FeatureGroup();
         mapsServer.data.map((row) => {
 
@@ -166,7 +166,7 @@
             },
         });
         map.addControl(drawControl);
-        
+
         map.on("draw:created", function(e) {
             var type = e.layerType;
             var layer = e.layer;
@@ -174,7 +174,7 @@
             component.set('geojson', JSON.stringify(layer.toGeoJSON())); //.set('geoJsonProperties',  JSON.stringify(layer.toGeoJSON()) );
             drawnItems.addLayer(layer);
         });
-       
+
         map.on('zoomend', function(e) {
             zoom_init(e);
         });

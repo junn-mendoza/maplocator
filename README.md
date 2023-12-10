@@ -36,7 +36,7 @@ Schema::create('maps', function (Blueprint $table) {
     $table->string('category');
     $table->date('start_date');
     $table->date('end_date');
-    $table->integer('user_id')->unsigned();
+    $table->unsignedBigInteger('user_id');
     $table->foreign('user_id')->references('id')->on('users');
     $table->json('geojson');
     $table->timestamps();
@@ -69,4 +69,67 @@ Option 2 is to upload a GeoJson or KML file (both file types should be supported
 The area should also be editable, with functionality to move the geometry vertices so the user can edit the geometry. 
 
 <img src="https://i.imgur.com/UG20HqL.png"/>
+
+## Installation
+
+Clone the git repository
+
+```
+git clone https://github.com/junn-mendoza/maplocator.git
+```
+
+Go to maplocator directory
+```
+cd maplocator
+```
+
+Copy .env.example to .env
+```
+cp .env.example .env
+```
+
+Create database with this parameters
+```php
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=map
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Install using composer and npm 
+```
+composer install
+npm install
+```
+
+Migrate the database using php artisan
+```
+php artisan migrate
+```
+
+In command prompt run the  ff:
+```
+npm run dev
+ph artisan serve
+```
+
+You can acces the site in this url:
+```
+localhost:8000
+```
+
+To create new area just follow the image instructions below:
+
+<img src="https://i.imgur.com/rb22zVh.png"/>
+
+Click: finish then put your entry and hit Save your location
+
+<img src="https://i.imgur.com/VLeOOuJ.png"/>
+
+Note: start date and end date should be ```dd/mm/yyyy``` format
+
+
+
 

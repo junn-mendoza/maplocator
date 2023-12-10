@@ -21,9 +21,9 @@ class Map extends Component
     public $start_date;
     #[Rule('required|date_format:d/m/Y')]
     public $end_date;
-    public $user_id;
     #[Rule('required')]
     public $geojson;
+    public $user_id;
     public $center_lat;
     public $center_lng;
     public $map_zoom;

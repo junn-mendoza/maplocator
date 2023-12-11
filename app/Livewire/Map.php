@@ -34,7 +34,6 @@ class Map extends Component
 
     public function createMap($id = null)
     {
-        //dd($this->map_zoom, $this->center_lat, $this->center_lng);
         $this->validate();
         $geojson = json_decode($this->geojson, true);
         $data = [

@@ -13,15 +13,15 @@
             @livewire('map')
         </div>
         <script>
-            const elem_start_date = document.querySelector('input[name="start_date"]');
-            const datepicker1 = new Datepicker(elem_start_date, {
-            // ...options
-            }); 
+            // const elem_start_date = document.querySelector('input[name="start_date"]');
+            // const datepicker1 = new Datepicker(elem_start_date, {
+            //     format: 'dd/mm/yyyy'
+            // }); 
 
-            const elem_end_date = document.querySelector('input[name="end_date"]');
-            const datepicker2 = new Datepicker(elem_end_date, {
-            // ...options
-            }); 
+            // const elem_end_date = document.querySelector('input[name="end_date"]');
+            // const datepicker2 = new Datepicker(elem_end_date, {
+            //     format: 'dd/mm/yyyy'
+            // }); 
 
         </script>
     </div>

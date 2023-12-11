@@ -19,7 +19,7 @@ class Map extends Component
     public $category;
     #[Rule('required|date_format:d/m/Y')]
     public $start_date;
-    #[Rule('required|date_format:d/m/Y|after:start_date')]
+    #[Rule('required|date_format:d/m/Y')]
     public $end_date;
     #[Rule('required')]
     public $geojson;

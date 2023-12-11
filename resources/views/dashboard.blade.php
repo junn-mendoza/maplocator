@@ -12,5 +12,17 @@
         <div class='w-full' id='map'></div>
             @livewire('map')
         </div>
+        <script>
+            const elem_start_date = document.querySelector('input[name="start_date"]');
+            const datepicker1 = new Datepicker(elem_start_date, {
+            // ...options
+            }); 
+
+            const elem_end_date = document.querySelector('input[name="end_date"]');
+            const datepicker2 = new Datepicker(elem_end_date, {
+            // ...options
+            }); 
+
+        </script>
     </div>
 </x-app-layout>

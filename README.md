@@ -52,7 +52,7 @@ a validated field (set by person inputted)
   public $category;
   #[Rule('required|date_format:d/m/Y')]
   public $start_date;
-  #[Rule('required|date_format:d/m/Y')]
+  #[Rule('required|date_format:d/m/Y|after:start_date')]
   public $end_date;
   #[Rule('required')]
 ```
